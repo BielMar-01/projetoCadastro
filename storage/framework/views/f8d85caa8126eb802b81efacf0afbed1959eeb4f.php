@@ -22,7 +22,7 @@
 </head>
 <body>
     <div class="container">
-        <?php $__env->startComponent('component'); ?>
+        <?php $__env->startComponent('component', ["current" => $current] ); ?>
             
         <?php echo $__env->renderComponent(); ?>
         <main role="main">
