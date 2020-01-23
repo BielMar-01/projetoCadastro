@@ -12,12 +12,19 @@
         body{
             padding: 20px;
         }
+
+        .navbar{
+            margin-bottom: 20px;
+        }
     </style>
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
     <div class="container">
+        @component('component')
+            
+        @endcomponent
         <main role="main">
             @hasSection('body')
                 @yield('body')
