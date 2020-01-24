@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Produto;
 use Illuminate\Http\Request;
 
 class ControladorProduto extends Controller
@@ -13,7 +14,8 @@ class ControladorProduto extends Controller
      */
     public function index()
     {
-        return view('produtos');
+        $pros = Produto::all();
+        return view('produtos', compact('pros'));
     }
 
     /**
@@ -23,7 +25,7 @@ class ControladorProduto extends Controller
      */
     public function create()
     {
-        //
+        return view('novoproduto');
     }
 
     /**
@@ -34,7 +36,10 @@ class ControladorProduto extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pro= new Produto();
+        $pro->nome = $request->input('nomeProduto');
+        $pro->save();
+        return redirect('/produtos');
     }
 
     /**
@@ -56,7 +61,11 @@ class ControladorProduto extends Controller
      */
     public function edit($id)
     {
-        //
+        $pro = Produto::find($id);
+        if (isset($pro)) {
+            return view('/editarproduto', compact('pro'));
+        }
+        return redirect('/produtos');
     }
 
     /**
@@ -68,7 +77,12 @@ class ControladorProduto extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pro = Produto::find($id);
+        if (isset($pro)) {
+            $pro->nome = $request->input('nomeProduto');
+            $pro->save();
+        }
+        return redirect('/produtos');
     }
 
     /**
@@ -79,6 +93,10 @@ class ControladorProduto extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pro = Produto::find($id);
+        if (isset($pro)) {
+            $pro->delete();
+        }
+        return redirect('/produtos');
     }
 }
