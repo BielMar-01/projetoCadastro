@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="departamentoProduto" class="control-label"> Nome do Produto </label>
+                            <label for="departamentoProduto" class="control-label"> Categoria </label>
                             <div class="input-group">
                                 <select class="form-control" id="departamentoProduto" > 
 
