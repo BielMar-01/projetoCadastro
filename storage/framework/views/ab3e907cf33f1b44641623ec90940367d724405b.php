@@ -55,9 +55,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="departamentoProduto" class="control-label"> Nome do Produto </label>
+                            <label for="categoriaProduto" class="control-label"> Categoria </label>
                             <div class="input-group">
-                                <select class="form-control" id="departamentoProduto" > 
+                                <select class="form-control" id="categoriaProduto" > 
 
                                 </select>
                             </div>
@@ -81,9 +81,22 @@
             $('#nomeProduto').val('');
             $('#precoProduto').val('');
             $('#quantidadeProduto').val('');
-            $('#departamentoProduto').val('');
             $('#dlgProdutos').modal('show');
         }
+
+        function carregarCategorias(){
+            $.getJSON('/api/categorias', function(data) { 
+                for(i=0; i<data.length;i++) {
+                    opcao = '<option value="' + data[1].id + '">' + 
+                        data[i].nome + '</option';
+                    $('#categoriaProduto').append(opcao);
+                }
+            });
+        }
+
+        $(function(){
+            carregarCategorias();
+        })
     </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layout.app', ["current" => "produtos"], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/gabriel/code/projetoCadastro/resources/views/produtos.blade.php ENDPATH**/ ?>
