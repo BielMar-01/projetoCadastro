@@ -21,15 +21,15 @@
             </table>
         </div>
         <div class="card-footer">
-            <button class="btn btn-sm btn-primary" role="button">Novo Produto</button>
+            <button class="btn btn-sm btn-primary" role="button" onClick="novoProduto()">Novo Produto</button>
         </div>
     </div>
 
     <div class="modal" tabindex="-1" role="dialog" id="dlgProdutos">
         <div class="modal-dialog" role="document">
-            <div class="modall-content">
-                <form id="formProduto" class="form-horizontal">
-                    <div class="model-header">
+            <div class="modal-content">
+                <form class="form-horizontal" id="formProduto" >
+                    <div class="modal-header">
                         <h5 class="modal-title">Novo produto</h5>
                     </div>
                     <div class="modal-body">
@@ -74,4 +74,17 @@
         </div>
     </div>
 
+@endsection
+
+@section('javascript')
+    <script type="text/javascript">
+        function novoProduto() {
+            $('#id').val('');
+            $('#nomeProduto').val('');
+            $('#precoProduto').val('');
+            $('#quantidadeProduto').val('');
+            $('#departamentoProduto').val('');
+            $('#dlgProdutos').modal('show');
+        }
+    </script>
 @endsection

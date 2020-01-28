@@ -33,5 +33,9 @@
     </div>
 
     <script src="<?php echo e(asset('js/app.js')); ?>" type="text/javascript"></script>
+
+    <?php if (! empty(trim($__env->yieldContent('javascript')))): ?>
+        <?php echo $__env->yieldContent('javascript'); ?>
+    <?php endif; ?>
 </body>
 </html><?php /**PATH /home/gabriel/code/projetoCadastro/resources/views/layout/app.blade.php ENDPATH**/ ?>

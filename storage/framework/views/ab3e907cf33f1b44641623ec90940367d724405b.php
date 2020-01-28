@@ -19,15 +19,15 @@
             </table>
         </div>
         <div class="card-footer">
-            <button class="btn btn-sm btn-primary" role="button">Novo Produto</button>
+            <button class="btn btn-sm btn-primary" role="button" onClick="novoProduto()">Novo Produto</button>
         </div>
     </div>
 
     <div class="modal" tabindex="-1" role="dialog" id="dlgProdutos">
         <div class="modal-dialog" role="document">
-            <div class="modall-content">
-                <form id="formProduto" class="form-horizontal">
-                    <div class="model-header">
+            <div class="modal-content">
+                <form class="form-horizontal" id="formProduto" >
+                    <div class="modal-header">
                         <h5 class="modal-title">Novo produto</h5>
                     </div>
                     <div class="modal-body">
@@ -72,5 +72,18 @@
         </div>
     </div>
 
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('javascript'); ?>
+    <script type="text/javascript">
+        function novoProduto() {
+            $('#id').val('');
+            $('#nomeProduto').val('');
+            $('#precoProduto').val('');
+            $('#quantidadeProduto').val('');
+            $('#departamentoProduto').val('');
+            $('#dlgProdutos').modal('show');
+        }
+    </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layout.app', ["current" => "produtos"], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/gabriel/code/projetoCadastro/resources/views/produtos.blade.php ENDPATH**/ ?>
