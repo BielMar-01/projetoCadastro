@@ -2,7 +2,7 @@
     <div class="card border">
         <div class="card-body">
             <h5 class="card-title">Cadastro de Produtos</h5>
-            <table class="table table_ordered table-hover">
+            <table class="table table_ordered table-hover" id="tabelaProdutos">
                 <thead>
                     <tr>
                         <th>Código</th>
@@ -87,15 +87,40 @@
         function carregarCategorias(){
             $.getJSON('/api/categorias', function(data) { 
                 for(i=0; i<data.length;i++) {
-                    opcao = '<option value="' + data[1].id + '">' + 
+                    opcao = '<option value="' + data[i].id + '">' + 
                         data[i].nome + '</option';
                     $('#categoriaProduto').append(opcao);
                 }
             });
         }
 
+        function montarLinha(p){
+            var linha = "<tr>" +
+                "<td>" + p.id + "</td>" +
+                "<td>" + p.nome + "</td>" +
+                "<td>" + p.estoque + "</td>" +
+                "<td>" + p.preco + "</td>" +
+                "<td>" + p.categoria_id + "</td>" +
+                "<td>" + 
+                    '<button class="btn btn-sm btn-primary"> Editar </button>' +
+                    '<button class="btn btn-sm btn-danger"> Apagar </button>' +
+                 "</td>" +
+                "</tr>";
+            return linha;
+        }
+
+        function carregarProdutos(){
+            $.getJSON('/api/produtos', function(produtos) { 
+                for(i=0; i<produtos.length;i++) {
+                    linha = montarLinha(produtos[i]);
+                    $('#tabelaProdutos>tbody').append(linha);
+                }
+            });
+        }
+
         $(function(){
             carregarCategorias();
+            carregarProdutos();
         })
     </script>
 <?php $__env->stopSection(); ?>
