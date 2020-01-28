@@ -76,6 +76,13 @@
 
 <?php $__env->startSection('javascript'); ?>
     <script type="text/javascript">
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': "<?php echo e(csrf_token()); ?>"
+            }
+        });
+        
         function novoProduto() {
             $('#id').val('');
             $('#nomeProduto').val('');

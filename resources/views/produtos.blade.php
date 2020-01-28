@@ -81,7 +81,7 @@
 
         $.ajaxSetup({
             headers: {
-                'X-CSRF_TOKEN': "{{}}"
+                'X-CSRF-TOKEN': "{{csrf_token() }}"
             }
         });
         
