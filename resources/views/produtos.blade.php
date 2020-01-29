@@ -67,7 +67,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary"> Salvar</button>
-                        <button type="submit" class="btn btn-secondary" data-dissmiss="modal"> Cancelar</button>
+                        <button type="submit" class="btn btn-secondary" data-dismiss="modal"> Cancelar</button>
                     </div>
                 </form>
             </div>
@@ -135,7 +135,9 @@
                 categoria_id: $("#categoriaProduto").val()
             };
             $.post("/api/produtos", prod, function(data) {
-                console.log(data);
+                produto = JSON.parse(data);
+                linha = montarLinha(produto);
+                $('#tabelaProdutos>tbody').append(linha);
             });
         }
 
