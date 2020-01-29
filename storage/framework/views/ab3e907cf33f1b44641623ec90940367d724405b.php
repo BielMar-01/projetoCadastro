@@ -8,7 +8,7 @@
                         <th>Código</th>
                         <th>Nome </th>
                         <th>Quantidade </th>
-                        <th>Preçp </th>
+                        <th>Preço </th>
                         <th>Departamento </th>
                         <th>Ações</th>
                     </tr>
@@ -124,6 +124,24 @@
                 }
             });
         }
+
+        function criarProduto() {
+            prod = {
+                nome: $("#nomeProduto").val(),
+                preco: $("#precoProduto").val(),
+                estoque: $("#quantidadeProduto").val(),
+                categoria_id: $("#categoriaProduto").val()
+            };
+            $.post("/api/produtos", prod, function(data) {
+                console.log(data);
+            });
+        }
+
+        $("#formProduto").submit( function(event) {
+            event.preventDefault(); 
+            criarProduto();
+            $("#dlgProdutos").modal('hide');
+        });
 
         $(function(){
             carregarCategorias();

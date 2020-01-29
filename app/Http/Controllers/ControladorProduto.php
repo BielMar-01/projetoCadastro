@@ -32,7 +32,7 @@ class ControladorProduto extends Controller
      */
     public function create()
     {
-        return view('novoproduto');
+        //
     }
 
     /**
@@ -71,13 +71,8 @@ class ControladorProduto extends Controller
      */
     public function edit($id)
     {
-        $pro = Produto::find($id);
-        if (isset($pro)) {
-            return view('/editarproduto', compact('pro'));
-        }
-        return redirect('/produtos');
+        //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -87,12 +82,7 @@ class ControladorProduto extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pro = Produto::find($id);
-        if (isset($pro)) {
-            $pro->nome = $request->input('nomeProduto');
-            $pro->save();
-        }
-        return redirect('/produtos');
+        //
     }
 
     /**
@@ -103,10 +93,6 @@ class ControladorProduto extends Controller
      */
     public function destroy($id)
     {
-        $pro = Produto::find($id);
-        if (isset($pro)) {
-            $pro->delete();
-        }
-        return redirect('/produtos');
+        //
     }
 }
