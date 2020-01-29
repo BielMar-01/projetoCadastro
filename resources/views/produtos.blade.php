@@ -118,7 +118,7 @@
             return linha;
         }
 
-        function editar(id) {
+        function editar(id) { 
             $.getJSON('/api/produtos/' + id, function(data) { 
                 console.log(data);
                 $('#id').val(data.id);
@@ -130,7 +130,7 @@
             });
         }
 
-        function remover(id) {
+        function remover(id) { 
             $.ajax({
                 type: "DELETE",
                 url: "/api/produtos/" + id,
@@ -159,7 +159,7 @@
             });
         }
 
-        function criarProduto() {
+        function criarProduto() { 
             prod = {
                 nome: $("#nomeProduto").val(),
                 preco: $("#precoProduto").val(),
@@ -173,7 +173,7 @@
             });
         }
 
-        function salvarProduto() {
+        function salvarProduto() { 
             prod = {
                 id: $("#id").val(),
                 nome: $("#nomeProduto").val(),
@@ -187,7 +187,7 @@
                 url: "/api/produtos/" + prod.id,
                 context: this,
                 data: prod,
-                success: function() {
+                success: function(data) {
                     console.log('Salvou OK');
                 },
                 error: function(error) {
